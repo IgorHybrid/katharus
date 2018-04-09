@@ -1,0 +1,22 @@
+{
+  "name": "katharus",
+  "author": "Igor Iglesias Alonso",
+  "description": "App for students exchange between different countries. Demo for class project.",
+  "version": "0.1.0",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IgorHybrid/katharus.git"
+  },
+  "dependencies": {
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
+    "react-scripts": "1.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
