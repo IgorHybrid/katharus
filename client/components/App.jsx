@@ -3,10 +3,14 @@ import { BrowserRouter as Router, Route} from 'react-router-dom';
 
 //components
 import Menu   from "./Menu.jsx";
+import Footer from "./Footer.jsx";
 import Home   from "./Home.jsx";
 import About  from "./About.jsx";
 import Login  from "./Login.jsx";
 import Signup from "./Signup.jsx";
+
+//styles
+import "../css/App.css";
 
 class App extends React.Component {
   render() {
@@ -21,6 +25,7 @@ class App extends React.Component {
             <Route       path = "/sign-up" component = { Signup } />
           </div>
         </Router>
+        <Footer />
       </div>
     );
   }
