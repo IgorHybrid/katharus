@@ -23,7 +23,7 @@ var fields = {
   created: {
       type: Date,
       default: Date.now
-  }
+  },
   email: {
     type: String,
     unique: true,
