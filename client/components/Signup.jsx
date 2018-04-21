@@ -6,10 +6,17 @@ import { Button, ButtonToolbar } from 'react-bootstrap';
 import '../css/Signup.css';
 
 export default class Signup extends React.Component{
+  constructor(props) {
+    super(props);
+    this.signForm = React.createRef();
+  }
+  cleanForm(){
+    this.signForm.current.reset();
+  }
   render(){
     return(
       <Grid>
-        <form>
+        <form id = "signForm" ref = {this.signForm}>
           <FormGroup>
             <Row>
               <Col xs = { 0 }  md = { 3 }></Col>
@@ -62,7 +69,7 @@ export default class Signup extends React.Component{
               <Col xs = { 12 } md = { 6 }>
                 <ButtonToolbar id = "buttontoolbar">
                   <Button bsStyle = "primary">Submit</Button>
-                  <Button bsStyle = "danger" >Clean</Button>
+                  <Button bsStyle = "danger" onClick = { this.cleanForm.bind(this) }>Clean</Button>
                 </ButtonToolbar>
               </Col>
               <Col xs = { 0 }  md = { 3 }></Col>
