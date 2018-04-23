@@ -1,19 +1,31 @@
-import 'bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import React, { Component } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
 
-import '../css/App.css';
+//components
+import Menu   from "./Menu.jsx";
+import Footer from "./Footer.jsx";
+import Home   from "./Home.jsx";
+import About  from "./About.jsx";
+import Login  from "./Login.jsx";
+import Signup from "./Signup.jsx";
 
-class App extends Component {
+//styles
+import "../css/App.css";
+
+class App extends React.Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <Menu />
+        <Router>
+          <div>
+            <Route exact path = "/"        component = { Home }   />
+            <Route       path = "/about"   component = { About }  />
+            <Route       path = "/log-in"  component = { Login }  />
+            <Route       path = "/sign-up" component = { Signup } />
+          </div>
+        </Router>
+        <Footer />
       </div>
     );
   }
