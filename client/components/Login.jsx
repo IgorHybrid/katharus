@@ -1,9 +1,93 @@
 import React from 'react';
+import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import { Grid, Row, Col } from 'react-bootstrap';
+import { Button, ButtonToolbar } from 'react-bootstrap';
+import { Redirect } from 'react-router'
 
 export default class Login extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      redirect: false,
+      username: null,
+      password: null
+    }
+    this.logForm = React.createRef();
+    this.errorMsg = React.createRef();
+  }
+
+  cleanForm(){
+    this.signForm.current.reset();
+  }
+
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.id;
+
+    this.setState({
+        [name]: value
+      });
+  }
+
+  handleSubmit(e){
+    e.preventDefault();
+    console.log('Submit!');
+  }
+
   render(){
+    if(this.state.redirect){
+      return <Redirect to = "/" />;
+    }
+
     return(
-      <h1>LOG IN</h1>
+      <Grid>
+        <Row>
+          <Col className = "text-center">
+            <h3>Log in to Katharus</h3>
+          </Col>
+        </Row>
+        <form id = "logForm" ref = { this.logForm } onSubmit = { this.handleSubmit.bind(this) }>
+          <FormGroup role = "form">
+            <Row>
+              <Col xs = { 0 }  md = { 3 }></Col>
+              <Col xs = { 12 } md = { 6 }>
+                <ControlLabel>Username</ControlLabel>
+                <FormControl
+                  id = "username"
+                  type = "text"
+                  placeholder = "Enter your username"
+                  onChange = { this.handleInputChange.bind(this) }
+                />
+              </Col>
+              <Col xs = { 0 }  md = { 3 }></Col>
+            </Row>
+            <Row>
+              <Col xs = { 0 }  md = { 3 }></Col>
+              <Col xs = { 12 } md = { 6 }>
+                <ControlLabel>Password</ControlLabel>
+                <FormControl
+                  id = "password"
+                  type = "password"
+                  placeholder = "Enter your password"
+                  onChange = { this.handleInputChange.bind(this) }
+                />
+              </Col>
+              <Col xs = { 0 }  md = { 3 }></Col>
+            </Row>
+            <Row>
+              <Col xs = { 0 }  md = { 3 }></Col>
+              <Col xs = { 12 } md = { 6 }>
+                <ButtonToolbar id = "buttontoolbar">
+                  <Button bsStyle = "primary" type = "submit">Submit</Button>
+                  <Button bsStyle = "danger" onClick = { this.cleanForm.bind(this) }>Clean</Button>
+                </ButtonToolbar>
+              </Col>
+              <Col xs = { 0 }  md = { 3 }></Col>
+            </Row>
+          </FormGroup>
+        </form>
+      </Grid>
     );
   }
 };
