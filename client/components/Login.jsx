@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import { Grid, Row, Col } from 'react-bootstrap';
 import { Button, ButtonToolbar } from 'react-bootstrap';
@@ -8,7 +9,6 @@ export default class Login extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      redirect: false,
       username: null,
       password: null
     }
@@ -17,7 +17,7 @@ export default class Login extends React.Component{
   }
 
   cleanForm(){
-    this.signForm.current.reset();
+    this.logForm.current.reset();
   }
 
   handleInputChange(event) {
@@ -32,14 +32,21 @@ export default class Login extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
-    console.log('Submit!');
+
+    axios.post('/log-in', {
+      username: this.state.username || "null",
+      password: this.state.password || "null"
+    })
+    .then(response => {
+      //console.log(response);
+      window.location.href = '/';
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 
   render(){
-    if(this.state.redirect){
-      return <Redirect to = "/" />;
-    }
-
     return(
       <Grid>
         <Row>
