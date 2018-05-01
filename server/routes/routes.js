@@ -1,4 +1,5 @@
 var express = require('express');
+var passport = require('passport');
 var router = express.Router();
 
 //Validations
@@ -10,17 +11,17 @@ var User = require('../models/user');
 
 // GET '/'
 router.get('/', function(req, res){
-  res.render('index')
+  res.render('index');
 });
 
 //GET '/about'
 router.get('/about', function(req, res){
-  res.render('index')
+  res.render('index');
 });
 
 //GET '/sign-up'
 router.get('/sign-up', function(req, res){
-  res.render('index')
+  res.render('index');
 });
 
 //POST '/sign-up'
@@ -45,9 +46,22 @@ router.post('/sign-up',
       res.status(201).send({id: docs._id});
     });
 });
+
 //GET 'log-in'
 router.get('/log-in', function(req, res){
-  res.render('index')
+  res.render('index');
+});
+
+//POST 'log-in'
+router.post('/log-in',function(req, res, next){
+  passport.authenticate('local',function(err, user, info) {
+    if (err) { return next(err); }
+    if (!user) { return res.status(422).send({msg: 'Mal'}) }
+    req.logIn(user, function(err) {
+      if (err) { return next(err); }
+      res.status(200).send({msg: 'Login Correct'});
+    });
+  })(req, res, next);
 });
 
 
