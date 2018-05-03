@@ -64,5 +64,13 @@ router.post('/log-in',function(req, res, next){
   })(req, res, next);
 });
 
+//GET 'logout'
+router.get('/logout', function(req, res, next){
+  req.session.destroy(function (err) {
+    res.clearCookie('connect.sid');
+    res.clearCookie('user');
+    res.redirect('/log-in');
+  });
+});
 
 module.exports = router;
