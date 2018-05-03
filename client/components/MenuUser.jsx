@@ -1,16 +1,19 @@
 import React from 'react';
-import { Nav, NavItem } from 'react-bootstrap';
+import { Nav, NavDropdown, MenuItem } from 'react-bootstrap';
 
 export default class MenuLogin extends React.Component {
   constructor(props){
     super(props);
+    this.navtitle = "Hi, " + this.props.user.username;
   }
   render(){
     return (
       <Nav pullRight>
-        <NavItem eventKey={1} href = '#'>
-          Hi, {this.props.user.username}
-        </NavItem>
+        <NavDropdown title = { this.navtitle }  eventKey = { 1 } id = "dropdown">
+          <MenuItem eventKey = { 1.1 }> Profile </MenuItem>
+          <MenuItem divider />
+          <MenuItem eventKey = { 1.2 }> Logout </MenuItem>
+        </NavDropdown>
       </Nav>
     );
   }
