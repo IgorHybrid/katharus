@@ -11,7 +11,6 @@ export default class Menu extends React.Component {
   constructor(props) {
     super(props);
     const cookies = new Cookies();
-    console.log(cookies.get('user'));
     this.state = {
       user: cookies.get('user') || null
     }
@@ -19,7 +18,6 @@ export default class Menu extends React.Component {
 
   render() {
     var { user } = this.state;
-    console.log(user);
     var logMenu;
     if(user){
       logMenu = <MenuUser user = { user }/>;

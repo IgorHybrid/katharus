@@ -42,7 +42,7 @@ export default class Login extends React.Component{
       window.location.href = '/';
     })
     .catch(function (error) {
-      console.log(error);
+      //console.log(error);
     });
   }
 
