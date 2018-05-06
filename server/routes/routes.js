@@ -14,8 +14,8 @@ router.get('/', function(req, res){
   res.render('index');
 });
 
-//GET '/about'
-router.get('/about', function(req, res){
+//GET '/trips'
+router.get('/trips', function(req, res){
   res.render('index');
 });
 
