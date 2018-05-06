@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
  * Collection schema.
  */
 var fields = {
-  _username: {
+  _user: {
     type: Schema.Types.ObjectId,
     ref: 'User',
     required: true
