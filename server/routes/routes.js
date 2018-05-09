@@ -6,17 +6,40 @@ var router = express.Router();
 const { check, validationResult } = require('express-validator/check');
 const { matchedData } = require('express-validator/filter');
 
-//User Schema
+//All Schemas
 var User = require('../models/user');
+var Trip = require('../models/trip');
 
 // GET '/'
 router.get('/', function(req, res){
   res.render('index');
 });
 
+//GET /trips-json
+router.get('/trips-json', function(req,res){
+  var query = {};
+  Trip.find(query)
+  .populate('_user')
+  .exec(function(err, dt){
+    if(err) return res.status(422).send({msg: err});
+    //console.log(dt);
+    res.json(dt);
+  });
+});
+
 //GET '/trips'
 router.get('/trips', function(req, res){
   res.render('index');
+});
+
+//POST '/trips'
+router.post('/trips', function(req, res){
+  var trip = new Trip(req.body);
+
+  trip.save(function(err, docs){
+    if (err) return res.status(422).json({ errors: err });
+    res.status(201).send({id: docs._id});
+  });
 });
 
 //GET '/sign-up'
