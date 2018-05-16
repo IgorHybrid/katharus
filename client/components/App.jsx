@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route} from 'react-router-dom';
 import Menu   from "./Menu.jsx";
 import Footer from "./Footer.jsx";
 import Home   from "./Home.jsx";
-import About  from "./About.jsx";
+import Trip   from "./Trip.jsx";
 import Login  from "./Login.jsx";
 import Signup from "./Signup.jsx";
 
@@ -20,7 +20,7 @@ class App extends React.Component {
         <Router>
           <div>
             <Route exact path = "/"        component = { Home }   />
-            <Route       path = "/about"   component = { About }  />
+            <Route       path = "/trips"   component = { Trip }   />
             <Route       path = "/log-in"  component = { Login }  />
             <Route       path = "/sign-up" component = { Signup } />
           </div>

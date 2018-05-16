@@ -34,7 +34,6 @@ app.use(function(req, res, next){
     // no: set a new cookie
     var user = {username: req.user.username, id: req.user._id};
     res.cookie('user', JSON.stringify(user), { maxAge: 3600 });
-    console.log('cookie created successfully');
   }
   next(); // <-- important!
 });

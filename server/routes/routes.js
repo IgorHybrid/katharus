@@ -6,17 +6,56 @@ var router = express.Router();
 const { check, validationResult } = require('express-validator/check');
 const { matchedData } = require('express-validator/filter');
 
-//User Schema
+//All Schemas
 var User = require('../models/user');
+var Trip = require('../models/trip');
 
 // GET '/'
 router.get('/', function(req, res){
   res.render('index');
 });
 
-//GET '/about'
-router.get('/about', function(req, res){
+//GET /trips-json
+router.get('/trips-json', function(req,res){
+  var query = {};
+  Trip.find(query)
+  .populate('_user')
+  .exec(function(err, dt){
+    if(err) return res.status(422).send({msg: err});
+    //console.log(dt);
+    res.json(dt);
+  });
+});
+
+//GET '/trips'
+router.get('/trips', function(req, res){
   res.render('index');
+});
+
+//POST '/trips'
+router.post('/trips', function(req, res){
+  var trip = new Trip(req.body);
+
+  trip.save(function(err, docs){
+    if (err) return res.status(422).json({ errors: err });
+    res.status(201).send({id: docs._id});
+  });
+});
+
+//DELETE '/trip/:id'
+router.delete('/trip/:id', function(req, res, next){
+  var id = req.params.id || null;
+
+  if(!id){
+    return res.status(422).json({err: 'Trip id needed'});
+  }
+
+  Trip.deleteOne({_id: id}, function(err, trip){
+    if (err) return res.status(422).json({err: err});
+
+    return res.status(202).json({msg: 'Trip ' + id + ' succesfully removed'})
+
+  });
 });
 
 //GET '/sign-up'
