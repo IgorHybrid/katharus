@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
 import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import { Button, ButtonToolbar } from 'react-bootstrap';
+import { Alert } from 'react-bootstrap';
 import Popup from "reactjs-popup";
 import Cookies from 'universal-cookie';
 import axios from 'axios';
@@ -9,9 +10,8 @@ import axios from 'axios';
 export default class About extends React.Component{
   constructor(props) {
     super(props);
-    const cookies = new Cookies();
     this.state = {
-      user: cookies.get('user') || null,
+      user: null,
       refresh: false,
       data: [],
       description: null,
@@ -48,8 +48,17 @@ export default class About extends React.Component{
 
     return year + "/" + month + "/" + dt;
   }
-  deleteTrip(){
-    console.log('Delete');
+  deleteTrip(id){
+    axios.delete('/trip/' + id)
+    .then(response => {
+      //console.log(response.data.msg);
+      console.log(this.state.refresh);
+      this.setState({refresh: true});
+      console.log(this.state.refresh);
+    })
+    .catch(error => {
+      console.log(error);
+    });
   }
   handleSubmit(e){
     e.preventDefault();
@@ -69,6 +78,20 @@ export default class About extends React.Component{
     });
   }
   componentDidMount(){
+    const cookies = new Cookies();
+    if(cookies.get('user')){
+      this.setState({user: cookies.get('user')});
+    }
+    axios.get('/trips-json')
+      .then(response => {
+        this.setState({data:response.data})
+        //console.log(response);
+      })
+      .catch(function (error) {
+        //console.log(error);
+      });
+  }
+  componentDidUpdate(){
     axios.get('/trips-json')
       .then(response => {
         this.setState({data:response.data})
@@ -132,6 +155,14 @@ export default class About extends React.Component{
             </Col>
           </Row>
         }
+        { this.state.data.length == 0 &&
+          <Alert bsStyle="danger">
+            <h3>Oh snap! There is an error!</h3>
+            <h4>
+              There are no trips available yet :(
+            </h4>
+          </Alert>
+        }
         {data.map(trip =>
           <div className = "trip" key = { trip._id }>
             <h2>Country: { trip.country }</h2>
@@ -139,7 +170,7 @@ export default class About extends React.Component{
             <p>Price: { trip.price }</p>
             <p>Description: { trip.description }</p>
             { (user && trip._user._id == user.id) &&
-              <Button bsStyle = "danger" onClick = { this.deleteTrip.bind(this) }>Delete</Button>
+              <Button bsStyle = "danger" onClick = { this.deleteTrip.bind(this, trip._id) }>Delete</Button>
             }
           </div>
         )}
