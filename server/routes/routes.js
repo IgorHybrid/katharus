@@ -42,6 +42,22 @@ router.post('/trips', function(req, res){
   });
 });
 
+//DELETE '/trip/:id'
+router.delete('/trip/:id', function(req, res, next){
+  var id = req.params.id || null;
+
+  if(!id){
+    return res.status(422).json({err: 'Trip id needed'});
+  }
+
+  Trip.deleteOne({_id: id}, function(err, trip){
+    if (err) return res.status(422).json({err: err});
+
+    return res.status(202).json({msg: 'Trip ' + id + ' succesfully removed'})
+
+  });
+});
+
 //GET '/sign-up'
 router.get('/sign-up', function(req, res){
   res.render('index');
