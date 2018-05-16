@@ -10,9 +10,14 @@ import MenuUser  from './MenuUser.jsx';
 export default class Menu extends React.Component {
   constructor(props) {
     super(props);
-    const cookies = new Cookies();
     this.state = {
-      user: cookies.get('user') || null
+      user: null
+    }
+  }
+  componentDidMount(){
+    const cookies = new Cookies();
+    if (cookies.get('user')){
+      this.setState({user: cookies.get('user')})
     }
   }
 
