@@ -4,6 +4,7 @@ var config = require('./config/database.js');
 var path = require('path');
 var bodyParser = require('body-parser');
 var app = express();
+var favicon = require('serve-favicon');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var session = require('express-session');
@@ -14,6 +15,7 @@ app.set('views', path.join(__dirname, '../client'));
 app.use(express.static(path.join(__dirname, '../client')));
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: false}));
+app.use(favicon(path.join(__dirname, '../client/img', 'favicon.ico')));
 app.use(cookieParser());
 
 app.use(session({ cookie: { maxAge: 60000 },
