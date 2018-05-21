@@ -5,6 +5,9 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import { Button, ButtonToolbar } from 'react-bootstrap';
 import { Redirect } from 'react-router'
 
+//Styles CSS
+import "../css/Login.css";
+
 export default class Login extends React.Component{
   constructor(props) {
     super(props);
@@ -85,7 +88,7 @@ export default class Login extends React.Component{
             <Row>
               <Col xs = { 0 }  md = { 3 }></Col>
               <Col xs = { 12 } md = { 6 }>
-                <ButtonToolbar id = "buttontoolbar">
+                <ButtonToolbar id = "buttontoolbarLogin">
                   <Button bsStyle = "primary" type = "submit">Submit</Button>
                   <Button bsStyle = "danger" onClick = { this.cleanForm.bind(this) }>Clean</Button>
                 </ButtonToolbar>
