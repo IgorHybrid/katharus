@@ -1,6 +1,8 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
 import { Thumbnail, Image, Jumbotron } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
+import { Well } from 'react-bootstrap';
 
 //Styles CSS
 import  "../css/Home.css";
@@ -26,6 +28,19 @@ export default class Home extends React.Component{
           </Col>
         </Row>
         <Row>
+          <Col>
+            <h2>About Us</h2>
+            <Well>
+              <p>
+                Katharus is a website for student exchange, we just put you in contact with other person from another countries to make posible the exchange.
+                You only have to sign up and choose a new adventure!
+              </p>
+              <Button bsStyle = "primary" href = "/sign-up">Sign up now!</Button>
+            </Well>
+          </Col>
+        </Row>
+        <Row>
+          <h2>Some Opinions</h2>
           <Col xs = { 12 } md = { 4 }>
             <Thumbnail className = "imagenesEstudiantes" src = "/img/chica_estudiante_fondo.jpg" alt = "Chica estudiante" >
               <h3 className = "text-center" >Rosa Gutierrez</h3>
