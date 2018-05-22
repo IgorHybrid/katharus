@@ -1,0 +1,8 @@
+.trip {
+  margin: 30px;
+  padding-left: 15px;
+  padding-bottom: 15px;
+  border-style: dashed;
+  border-color: #009BFF;
+  width: 60%;
+}

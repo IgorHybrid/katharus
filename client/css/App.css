@@ -3,19 +3,12 @@
 html {
   position: relative;
   min-height: 100%;
+  min-width: 450px;
 }
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
 }
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  background-color: #1f3d48;
-}
-.footer-text{
-  padding-top: 1.5em;
+.buttontoolbar{
+  margin-top: 1em;
 }

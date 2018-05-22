@@ -12,7 +12,7 @@ var Trip = require('../models/trip');
 
 // GET '/'
 router.get('/', function(req, res){
-  res.render('index');
+  res.render('index', { title: 'Katharus'});
 });
 
 //GET /trips-json
@@ -29,7 +29,7 @@ router.get('/trips-json', function(req,res){
 
 //GET '/trips'
 router.get('/trips', function(req, res){
-  res.render('index');
+  res.render('index', { title: 'Katharus: Trips' });
 });
 
 //POST '/trips'
@@ -60,7 +60,7 @@ router.delete('/trip/:id', function(req, res, next){
 
 //GET '/sign-up'
 router.get('/sign-up', function(req, res){
-  res.render('index');
+  res.render('index', { title: 'Katharus: Sign Up'});
 });
 
 //POST '/sign-up'
@@ -88,7 +88,7 @@ router.post('/sign-up',
 
 //GET 'log-in'
 router.get('/log-in', function(req, res){
-  res.render('index');
+  res.render('index', { title: 'Katharus: Log In' });
 });
 
 //POST 'log-in'
