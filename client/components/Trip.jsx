@@ -3,7 +3,7 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import { Button, ButtonToolbar } from 'react-bootstrap';
 import { Alert } from 'react-bootstrap';
-import Popup from "reactjs-popup";
+import { Modal } from 'react-bootstrap';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
 
@@ -11,6 +11,7 @@ export default class About extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
+      show: false,
       user: null,
       refresh: false,
       data: [],
@@ -19,6 +20,17 @@ export default class About extends React.Component{
       price: null
     }
     this.tripForm = React.createRef();
+
+    this.handleShow = this.handleShow.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+  }
+
+  handleClose() {
+    this.setState({ show: false });
+  }
+
+  handleShow() {
+    this.setState({ show: true });
   }
   handleInputChange(event) {
     const target = event.target;
@@ -52,12 +64,10 @@ export default class About extends React.Component{
     axios.delete('/trip/' + id)
     .then(response => {
       //console.log(response.data.msg);
-      console.log(this.state.refresh);
       this.setState({refresh: true});
-      console.log(this.state.refresh);
     })
     .catch(error => {
-      console.log(error);
+      //console.log(error);
     });
   }
   handleSubmit(e){
@@ -116,42 +126,44 @@ export default class About extends React.Component{
             <Col md = { 8 }>
             </Col>
             <Col md = { 4 }>
-              <Popup
-                trigger={<Button bsStyle = "primary" className = "pull-right">Add a new trip</Button>}
-                modal
-                closeOnDocumentClick
-                >
-                <h1>Fill the fields</h1>
-                <form id = "tripForm" ref = { this.tripForm } onSubmit = { this.handleSubmit.bind(this) }>
-                  <FormGroup role = "form">
-                    <ControlLabel>Country</ControlLabel>
-                    <FormControl
-                      id = "country"
-                      type = "text"
-                      placeholder = "Enter country name"
-                      onChange = { this.handleInputChange.bind(this) }
-                    />
-                    <ControlLabel>Price</ControlLabel>
-                    <FormControl
-                      id = "price"
-                      type = "text"
-                      placeholder = "Enter your price"
-                      onChange = { this.handleInputChange.bind(this) }
-                    />
-                    <ControlLabel>Description</ControlLabel>
-                    <FormControl
-                      id = "description"
-                      componentClass = "textarea"
-                      placeholder = "Add your description"
-                      onChange = { this.handleInputChange.bind(this) }
-                    />
-                    <ButtonToolbar id = "buttontoolbar">
-                      <Button bsStyle = "primary" type = "submit">Submit</Button>
-                      <Button bsStyle = "danger" onClick = { this.cleanForm.bind(this) }>Clean</Button>
-                    </ButtonToolbar>
-                  </FormGroup>
-                </form>
-              </Popup>
+              <Button bsStyle = "primary" className = "pull-right" onClick = { this.handleShow }>Add a new trip</Button>
+                <Modal show={ this.state.show } onHide={ this.handleClose }>
+                  <Modal.Header closeButton>
+                    <Modal.Title>Form to create a new trip</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
+                    <form id = "tripForm" ref = { this.tripForm } onSubmit = { this.handleSubmit.bind(this) }>
+                      <FormGroup role = "form">
+                        <h1>Fill the fields</h1>
+                        <ControlLabel>Country</ControlLabel>
+                        <FormControl
+                          id = "country"
+                          type = "text"
+                          placeholder = "Enter country name"
+                          onChange = { this.handleInputChange.bind(this) }
+                        />
+                        <ControlLabel>Price</ControlLabel>
+                        <FormControl
+                          id = "price"
+                          type = "text"
+                          placeholder = "Enter your price"
+                          onChange = { this.handleInputChange.bind(this) }
+                        />
+                        <ControlLabel>Description</ControlLabel>
+                        <FormControl
+                          id = "description"
+                          componentClass = "textarea"
+                          placeholder = "Add your description"
+                          onChange = { this.handleInputChange.bind(this) }
+                        />
+                        <ButtonToolbar className = "buttontoolbar">
+                          <Button bsStyle = "primary" type = "submit" onClick = { this.handleClose }>Submit</Button>
+                          <Button bsStyle = "danger" onClick = { this.cleanForm.bind(this) }>Clean</Button>
+                        </ButtonToolbar>
+                      </FormGroup>
+                    </form>
+                  </Modal.Body>
+                </Modal>
             </Col>
           </Row>
         }
