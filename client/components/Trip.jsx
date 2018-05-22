@@ -7,6 +7,9 @@ import { Modal } from 'react-bootstrap';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
 
+//Styles CSS
+import "../css/Trip.css";
+
 export default class About extends React.Component{
   constructor(props) {
     super(props);
