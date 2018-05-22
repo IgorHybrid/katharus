@@ -88,7 +88,7 @@ export default class Login extends React.Component{
             <Row>
               <Col xs = { 0 }  md = { 3 }></Col>
               <Col xs = { 12 } md = { 6 }>
-                <ButtonToolbar id = "buttontoolbarLogin">
+                <ButtonToolbar className = "buttontoolbar">
                   <Button bsStyle = "primary" type = "submit">Submit</Button>
                   <Button bsStyle = "danger" onClick = { this.cleanForm.bind(this) }>Clean</Button>
                 </ButtonToolbar>
