@@ -15,12 +15,12 @@ export default class Home extends React.Component{
           <Col xs = { 12 }>
             <Jumbotron id="jumbo">
               <Row>
-                <Col sm = { 8 }>
+                <Col md = { 8 }>
                   <h1>Katharus</h1>
                   <h2><em>"Travel with us, travel with Katharus"</em></h2>
                   <p>Your favourite website for student exchange</p>
                 </Col>
-                <Col xsHidden sm = { 4 } >
+                <Col xsHidden smHidden md = { 4 } >
                   <Image id="logo" src = "/img/logo_transparente.png" alt = "Logo Katharus"/>
                 </Col>
               </Row>
