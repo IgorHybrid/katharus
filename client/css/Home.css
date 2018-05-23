@@ -1,8 +1,53 @@
+#img-happy {
+  background-image: url("../img/College-students.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 500px;
+}
+#icons {
+  padding-bottom: 3.5em;
+}
+#icons img {
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+  -webkit-transition: 1s; /* Safari */
+  transition: 1s;
+  margin-top: 20px;
+}
+#icons img:hover{
+  -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(0%);
+}
+#jumbo h2, #jumbo p {
+  font-size: 190%;
+}
+#jumbo h1{
+  font-family: "Junegull";
+  font-size: 700%;
+  color: #2A6496;
+}
 #logo{
   width: 256.5px;
   height: 256.5px;
 }
+#well{
+  position: relative;
+  top: 20%;
+  left: 5%;
+  width: 40%;
+}
+#well p {
+  font-weight: bold;
+}
 .imagenesEstudiantes img{
   width: 212px;
   height: 270px;
+}
+h2.home{
+  border-bottom: 2px solid #009BFF;
+  color: #2A6496;
+  font-family: "Junegull";
+  font-size: 300%;
+  margin-bottom: 25px;
+  padding-bottom: 5px;
 }

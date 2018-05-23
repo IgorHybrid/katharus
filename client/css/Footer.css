@@ -3,9 +3,9 @@
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 60px;
+  height: 90px;
   background-color: #1f3d48;
 }
 .footer-text{
-  padding-top: 1.5em;
+  margin-top: 1.2em;
 }

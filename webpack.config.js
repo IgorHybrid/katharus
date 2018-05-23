@@ -19,6 +19,27 @@ module.exports = {
   {
    test: /\.css$/,
    loader: "style-loader!css-loader"
+  },
+  {
+   test: /\.(woff|woff2)$/,
+   use: {
+     loader: "file-loader",
+     options: {
+       name: "./fonts/[name].[ext]",
+     },
+   },
+  },
+  {
+   test: /\.(png|jpg|gif)$/,
+    use: [
+        {
+          loader: 'url-loader',
+          options: {
+            name: "./img/[name].[ext]",
+            limit: 8192
+          }
+        }
+    ]
   }]
  }
 }

@@ -1,13 +1,21 @@
-/* Sticky footer styles
--------------------------------------------------- */
+@font-face {
+  font-family: "Arcon";
+  src: url("../fonts/arcon-regular-webfont.woff") format("woff"), url("../fonts/arcon-regular-webfont.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Junegull";
+  src: url("../fonts/junegull_rg-webfont.woff") format("woff"), url("../fonts/junegull_rg-webfont.woff2") format("woff2");
+}
 html {
   position: relative;
   min-height: 100%;
-  min-width: 450px;
+  min-width: 530px;
+}
+html * {
+  font-family: "Arcon";
 }
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+  margin-bottom: 90px;
 }
 .buttontoolbar{
   margin-top: 1em;

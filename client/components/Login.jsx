@@ -53,7 +53,7 @@ export default class Login extends React.Component{
     return(
       <Grid>
         <Row>
-          <Col className = "text-center">
+          <Col className = "text-center login">
             <h3>Log in to Katharus</h3>
           </Col>
         </Row>
