@@ -1,0 +1,11 @@
+.dropdown ul li a{
+  font-family: "Arcon";
+  font-weight: bold;
+}
+nav a {
+  font-family: "Junegull";
+  font-size: 150%;
+}
+nav .navbar-header a {
+  font-size: 200%;
+}
