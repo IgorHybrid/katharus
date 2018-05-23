@@ -3,12 +3,26 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import { Thumbnail, Image, Jumbotron } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import { Well } from 'react-bootstrap';
+import Cookies from 'universal-cookie';
 
 //Styles CSS
 import  "../css/Home.css";
 
 export default class Home extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: null
+    }
+  }
+  componentDidMount(){
+    const cookies = new Cookies();
+    if (cookies.get('user')){
+      this.setState({user: cookies.get('user')})
+    }
+  }
   render(){
+    var { user } = this.state;
     return(
       <Grid>
         <Row>
@@ -35,8 +49,20 @@ export default class Home extends React.Component{
                 <p className = "text-justify">
                   Katharus is a website for student exchange, we just put you in contact with other person from another countries to make posible the exchange.
                   You only have to sign up and choose a new adventure!
-                  </p>
-                  <Button bsStyle = "primary" href = "/sign-up">Sign up now!</Button>
+                </p>
+                  { user &&
+                    <Button bsStyle = "primary" href = "/trips">See our trips!</Button>
+                  }
+                  { !user &&
+                    <Row>
+                      <Col xs = { 6 } className = "text-right">
+                        <Button bsStyle = "primary" href = "/sign-up">Sign up now!</Button>
+                      </Col>
+                      <Col xs = { 6 } className = "text-left">
+                        <Button bsStyle = "primary" href = "/log-in">Log in!</Button>
+                      </Col>
+                    </Row>
+                  }
               </Well>
             </div>
           </Col>
