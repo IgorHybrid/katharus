@@ -9,10 +9,14 @@ All fonts are from [1001 Fonts](http://www.1001fonts.com/) site and they are fre
 
 ## Instructions
 To start the project, just copy it and run the next command:
+    ```
     npm install
+    ```
 
 When all packages are installed, run this command:
+    ```
     npm start
+    ```
 
 And enjoy it!
 
