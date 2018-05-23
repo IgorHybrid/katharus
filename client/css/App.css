@@ -11,6 +11,9 @@ html {
   min-height: 100%;
   min-width: 530px;
 }
+html * {
+  font-family: "Arcon";
+}
 body {
   margin-bottom: 60px;
 }
