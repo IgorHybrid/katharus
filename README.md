@@ -7,7 +7,7 @@ All fonts are from [1001 Fonts](http://www.1001fonts.com/) site and they are fre
 * [Arcon](http://www.1001fonts.com/arcon-font.html)
 * [Junegull](http://www.1001fonts.com/junegull-font.html)
 
-##Instructions
+## Instructions
 To start the project, just copy it and run the next command:
     npm install
 
