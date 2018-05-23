@@ -121,7 +121,7 @@ export default class About extends React.Component{
       <Grid>
         <Row>
           <Col>
-            <h2>Take a look to our availables trips!</h2>
+            <h2 className = "trips">Take a look to our availables trips!</h2>
           </Col>
         </Row>
         { user &&
@@ -171,7 +171,7 @@ export default class About extends React.Component{
           </Row>
         }
         { this.state.data.length == 0 &&
-          <Alert bsStyle="danger">
+          <Alert className = "trips" bsStyle="danger">
             <h3>Oh snap! There is an error!</h3>
             <h4>
               There are no trips available yet :(
