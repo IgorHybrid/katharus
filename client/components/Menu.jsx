@@ -2,6 +2,8 @@ import React from 'react';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import Cookies from 'universal-cookie';
 
+//Styles CSS
+import "../css/Menu.css";
 
 //Login and logout components
 import MenuLogin from './MenuLogin.jsx';
