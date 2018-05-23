@@ -97,13 +97,13 @@ export default class Home extends React.Component{
         <Row id = "icons">
           <h2 className = "text-center home">Follow Us</h2>
           <Col className = "text-center" xs = { 4 } >
-            <Image src = "/img/social/color/Twitter.png"  alt = "Twitter" />
+            <a href = "https://twitter.com/?lang=es"><Image src = "/img/social/color/Twitter.png"  alt = "Twitter" /></a>
           </Col>
           <Col className = "text-center" xs = { 4 } >
-            <Image src = "/img/social/color/Github.png"   alt = "GitHub"  />
+            <a href = "https://github.com/IgorHybrid/katharus"><Image src = "/img/social/color/Github.png"   alt = "GitHub"  /></a>
           </Col>
           <Col className = "text-center" xs = { 4 } >
-            <Image src = "/img/social/color/Facebook.png" alt = "Facebook"/>
+            <a href = "https://www.facebook.com/"><Image src = "/img/social/color/Facebook.png" alt = "Facebook" /></a>
           </Col>
         </Row>
       </Grid>
