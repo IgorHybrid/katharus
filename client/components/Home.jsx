@@ -29,18 +29,20 @@ export default class Home extends React.Component{
         </Row>
         <Row>
           <Col>
-            <h2>About Us</h2>
-            <Well>
-              <p>
-                Katharus is a website for student exchange, we just put you in contact with other person from another countries to make posible the exchange.
-                You only have to sign up and choose a new adventure!
-              </p>
-              <Button bsStyle = "primary" href = "/sign-up">Sign up now!</Button>
-            </Well>
+            <h2 className = "text-center home">About Us</h2>
+            <div id = "img-happy">
+              <Well id = "well">
+                <p className = "text-justify">
+                  Katharus is a website for student exchange, we just put you in contact with other person from another countries to make posible the exchange.
+                  You only have to sign up and choose a new adventure!
+                  </p>
+                  <Button bsStyle = "primary" href = "/sign-up">Sign up now!</Button>
+              </Well>
+            </div>
           </Col>
         </Row>
         <Row>
-          <h2>Some Opinions</h2>
+          <h2 className = "text-center home">Some Opinions</h2>
           <Col xs = { 12 } md = { 4 }>
             <Thumbnail className = "imagenesEstudiantes" src = "/img/chica_estudiante_fondo.jpg" alt = "Chica estudiante" >
               <h3 className = "text-center" >Rosa Gutierrez</h3>
@@ -64,6 +66,18 @@ export default class Home extends React.Component{
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque leo eros, bibendum sit amet orci eu, tempus dapibus elit. Nam tincidunt condimentum leo. Etiam sed odio lobortis, imperdiet libero non, scelerisque sem. Phasellus pulvinar dolor vel pretium gravida. Nulla vitae.
               </p>
             </Thumbnail>
+          </Col>
+        </Row>
+        <Row id = "icons">
+          <h2 className = "text-center home">Follow Us</h2>
+          <Col className = "text-center" xs = { 4 } >
+            <Image src = "/img/social/color/Twitter.png"  alt = "Twitter" />
+          </Col>
+          <Col className = "text-center" xs = { 4 } >
+            <Image src = "/img/social/color/Github.png"   alt = "GitHub"  />
+          </Col>
+          <Col className = "text-center" xs = { 4 } >
+            <Image src = "/img/social/color/Facebook.png" alt = "Facebook"/>
           </Col>
         </Row>
       </Grid>
